@@ -7,11 +7,11 @@ import java.util.Date;
 
 @Entity
 @Table(name = "issue")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
+
 public class Issue extends BaseEntity{
 
     @Id
@@ -39,4 +39,6 @@ public class Issue extends BaseEntity{
     @JoinColumn(name = "project_id")
     @ManyToOne(optional = true,fetch = FetchType.LAZY)
     private Project project;
+
+
 }

@@ -16,6 +16,8 @@ public interface IssueService {
 
     TPage<IssueDto> getAllPageble(Pageable pageable);
 
-    Boolean delete(IssueDto issue);
 
+    IssueDto update(Long id, IssueDto project);
+
+    Boolean delete(Long id);
 }

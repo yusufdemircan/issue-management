@@ -3,7 +3,9 @@ package com.yusufdemircan.issuemanagement.service;
 
 
 
+import com.yusufdemircan.issuemanagement.dto.ProjectDto;
 import com.yusufdemircan.issuemanagement.entity.Project;
+import com.yusufdemircan.issuemanagement.util.TPage;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -12,15 +14,19 @@ import java.util.List;
 
 public interface ProjectService {
 
-    Project save(Project project);
+    ProjectDto save(ProjectDto project);
 
-    Project getById(Long id);
+    ProjectDto getById(Long id);
 
-    List<Project> getByProjectCode(String projectCode);
+    ProjectDto update(Long id,ProjectDto projectDto);
+
+    ProjectDto getByProjectCode(String projectCode);
 
     List<Project> getByProjectCodeContains(String projectCode);
 
-    Page<Project> getAllPageble(Pageable pageable);
+    TPage<ProjectDto> getAllPageble(Pageable pageable);
 
-    Boolean delete(Project project);
+    Boolean delete(ProjectDto project);
+
+    Boolean delete(Long id);
 }

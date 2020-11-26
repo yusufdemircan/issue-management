@@ -1,0 +1,75 @@
+<div class="main-content" style="padding-left: 10px; padding-top: 10px">
+  <ngx-datatable
+    #table
+    class="bootstrap"
+    [rows]="rows"
+    [columnMode]="'force'"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    [rowHeight]="'auto'"
+    [externalPaging]="true"
+    [count]="page.totalElements"
+    [offset]="page.page"
+    [limit]="page.size"
+    (page)="setPage($event)">
+
+    <ngx-datatable-column prop="id" name="No" sortable="false"></ngx-datatable-column>
+    <ngx-datatable-column prop="description" name="Description" sortable="false"></ngx-datatable-column>
+    <ngx-datatable-column prop="date" name="Date" sortable="false"></ngx-datatable-column>
+    <ngx-datatable-column prop="issueStatus" name="Status" sortable="false"></ngx-datatable-column>
+    <ngx-datatable-column prop="assignee.nameSurname" name="Assignee" sortable="false"></ngx-datatable-column>
+    <ngx-datatable-column prop="project.projectName" name="Project Name" sortable="false"></ngx-datatable-column>
+    <ngx-datatable-column prop="project.manager.nameSurname" name="Project Manager"
+                          sortable="false"></ngx-datatable-column>
+    <ngx-datatable-column prop="id" name="Action" sortable="false">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        <a [routerLink]="['/issue-detail/',value]">Detail</a>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+
+  <div>
+
+    <button type="button" class="btn btn-primary" (click)="openModal(issueTemplate)">Create Project</button>
+  </div>
+
+  <ng-template #issueTemplate>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">New Issue</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="issueForm" (ngSubmit)="saveIssue()">
+
+
+        <div class="form-group">
+          <label>Description</label>
+
+          <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': f.description.errors }" />
+          <div *ngIf="f.description.errors" class="invalid-feedback">
+            <div *ngIf="f.description.errors.required">Project Name is required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Project</label>
+
+          <select type="text" formControlName="project_id" class="form-control" [ngClass]="{ 'is-invalid': f.project_id.errors }" >
+            <option *ngFor="let opt of projectOption" [value]="opt.id">{{opt.projectName}}</option>
+          </select>
+          <div *ngIf="f.project_id.errors" class="invalid-feedback">
+
+          </div>
+        </div>
+
+        <div class="modal-footer" >
+          <button class="btn btn-light" (click)="closeAndResetModal()">Close</button>
+          <button class="btn btn-primary" >Save</button>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+</div>

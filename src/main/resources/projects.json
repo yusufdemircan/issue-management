@@ -1,0 +1,33 @@
+[
+  {
+    "_class": "com.yusufdemircan.issuemanagement.entity.Project",
+    "projectCode": "IM",
+    "projectName": "Issue Management Project"
+  },
+  {
+    "_class": "com.yusufdemircan.issuemanagement.entity.Project",
+    "projectCode": "ERP-S",
+    "projectName": "ERP Project for Sales"
+  },
+  {
+    "_class": "com.yusufdemircan.issuemanagement.entity.Project",
+    "projectCode": "CRM-S",
+    "projectName": "CRM Project for Sales"
+  },
+
+  {
+    "_class": "com.yusufdemircan.issuemanagement.entity.User",
+    "username": "dmrcn14",
+    "nameSurname": "yusuf demircan",
+    "email": "yusufdemircanysf@gmail.com"
+  },
+
+  {
+    "_class": "com.yusufdemircan.issuemanagement.entity.User",
+    "username": "jhondoe1",
+    "nameSurname": "Jhon Doe",
+    "email": "Jhondoe@gmail.com"
+  }
+
+
+]
